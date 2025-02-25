@@ -10,6 +10,9 @@ A real-time speech-to-text application that transcribes your voice and types it 
 - Always-on-top window for easy monitoring
 - Global keyboard shortcuts for control
 - Cross-platform compatibility (Windows, macOS, Linux)
+- Microphone selection capability
+- Context retention across recording sessions
+- Partial recognition display for real-time feedback
 
 ## System Requirements
 
@@ -36,7 +39,7 @@ A real-time speech-to-text application that transcribes your voice and types it 
 2. Install required packages:
 
    ```bash
-   pip install vosk sounddevice numpy PyQt6 pyautogui
+   pip install vosk sounddevice numpy PyQt6 pyautogui pyperclip
    ```
 
 3. Download and extract the Vosk speech recognition model:
@@ -57,19 +60,29 @@ A real-time speech-to-text application that transcribes your voice and types it 
    python transcriber.py
    ```
 
-2. A small monitoring window will appear and stay on top of other windows
+2. A monitoring window will appear and stay on top of other windows
 
-3. Control the application using global shortcuts:
+3. Select your microphone from the dropdown menu
+
+4. Control the application using global shortcuts:
    - `Ctrl+Shift+R`: Start/stop recording
+   - `Ctrl+Shift+C`: Clear context buffer
+   - `Ctrl+Shift+P`: Paste all accumulated text
    - `Ctrl+Shift+Q`: Quit the application
 
-4. Recording workflow:
+5. Recording workflow:
    - Position your cursor where you want the text to appear
    - Press `Ctrl+Shift+R` to start recording
    - Speak clearly into your microphone
    - Watch the transcribed text appear in the preview window
    - Text will be automatically typed at the cursor location
    - Press `Ctrl+Shift+R` again to stop recording
+
+6. Additional features:
+   - The "Clear Context" button erases all accumulated text
+   - The "Paste All" button pastes the entire transcription at once
+   - Partial recognition shows what the system is currently hearing
+   - Debug information helps troubleshoot audio issues
 
 ## Troubleshooting
 
@@ -83,7 +96,7 @@ If you encounter a "Process is not trusted" error:
 If the application isn't detecting your microphone:
 1. Verify your microphone is properly connected
 2. Check microphone permissions in system settings
-3. Confirm the correct input device is selected in system sound settings
+3. Select the correct input device from the dropdown menu
 4. Try using a different microphone
 
 ### Poor Transcription Quality
@@ -99,6 +112,7 @@ To improve transcription accuracy:
 - All processing happens locally on your machine
 - Uses PyQt6 for the GUI interface
 - Employs pyautogui for cursor control and text insertion
+- Uses pyperclip for clipboard operations
 - Requires accessibility permissions for automated text entry
 
 ## License
